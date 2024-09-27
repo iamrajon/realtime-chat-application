@@ -1,0 +1,42 @@
+{% load static %}
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head_title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <!--tailwind-->
+    {% tailwind_css %}
+
+    <!--daisyui cdn-->
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />  {% endcomment %}
+
+    <!--htmx cdn-->
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+    
+    <!--htmx websocket extension-->
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+
+    <!--alpinejs and hyperscript-->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+
+</head>
+<body data-theme="bumblebee">
+
+    {% include "r_chat/includes/alert_message.html" %}
+
+    <!--this is main div which contains every content -->
+    <div class="flex h-screen">
+        {% block body %}{% endblock body %}
+    </div>
+
+    {% block custom_js %}
+        <!--extend the block and write your custm js code-->
+    {% endblock custom_js %}
+    
+</body>
+</html>
